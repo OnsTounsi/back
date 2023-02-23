@@ -20,11 +20,7 @@ pipeline {
                 }
                }
 
-        stage('MVN COMPILE') {
-            steps {
-                bat 'mvn compile'
-            }
-        }
+
 
         stage('MVN COMPILE') {
                             steps {

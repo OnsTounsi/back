@@ -12,29 +12,36 @@ pipeline {
         }
 
        stage('MVN CLEAN') {
-                   steps {
+             steps {
                       withMaven() {
                      bat 'mvn clean compile'
 
                   }
-                }
-               }
-
-
+             }
+       }
 
         stage('MVN COMPILE') {
-                            steps {
-                                bat 'mvn compile'
-                            }
-                        }
+              steps {
+                        bat 'mvn compile'
+
+              }
+        }
+
+        stage('MVN PACKAGE') {
+               steps {
+                        bat 'mvn package'
+
+               }
+        }
 
         stage('MVN TEST') {
             steps {
-                bat 'mvn test'
+                      bat 'mvn test'
+
             }
         }
 
-}
+    }
 }
 
 

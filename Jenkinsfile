@@ -6,7 +6,7 @@ pipeline {
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: 'main']],
-                    userRemoteConfigs: [[url: 'https://github.com/OnsTounsi/exercice.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/OnsTounsi/back.git']]
                 ])
             }
         }

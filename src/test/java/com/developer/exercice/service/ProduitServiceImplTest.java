@@ -14,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,18 +84,22 @@ public class ProduitServiceImplTest {
     }
     @Test
     public void DeleteProduitSucces(){
-        Categorie categorie = categorieRepository.findById(2L).orElse(null);
-        assertNotNull(categorie);
-        Produit produit = new Produit();
-        Categorie savedCategorie = categorieService.ajout(categorie);
-        Produit expectedProduit = Produit.builder()
-                .id(57L)
-                .build();
 
-        boolean isDelted= service.supprimer(expectedProduit.getId());
-        assertTrue(isDelted);
-        Optional<Produit> optionalProduit=produitRepository.findById(expectedProduit.getId());
-        assertFalse(optionalProduit.isPresent());
+      Produit produit = new Produit();
+      Categorie categorie = new Categorie();
+      categorie.setNom("Test");
+
+      Categorie savedCategorie = categorieService.ajout(categorie);
+      produit.setNom("produit test");
+      produit.setDisponible(true);
+      produit.setCategorie(savedCategorie);
+      produit.setQuantite(10);
+      Long categorieId = savedCategorie.getId();
+      produit = service.create(produit,categorieId);
+      boolean isDeleted = service.supprimer(produit.getId());
+      assertTrue(isDeleted);
+      Optional<Produit> optionalProduit = produitRepository.findById(produit.getId());
+      assertFalse(optionalProduit.isPresent());
     }
 }
 

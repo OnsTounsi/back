@@ -42,7 +42,7 @@ pipeline {
         }
         stage('MVN SONARQUBE') {
                     steps {
-                        bat 'mvn sonar:sonar  -Dsonar.projectKey=jenkins  -Dsonar.host.url=http://localhost:9000    -Dsonar.login=sqp_c1e41eababf2852dd686f77ab44a64b0e6cbba04'
+                        bat 'mvn sonar:back  -Dsonar.projectKey=back  -Dsonar.host.url=http://localhost:9000    -Dsonar.login=sqp_c1e41eababf2852dd686f77ab44a64b0e6cbba04'
                     }
                 }
 

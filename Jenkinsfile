@@ -48,7 +48,7 @@ pipeline {
         stage('Build docker image'){
                     steps{
                          script{
-                             bat 'docker build -t onstounsi/demo .'
+                             bat 'docker build -t onstounsi/springboot.jar .'
                          }
                     }
         }
@@ -63,7 +63,7 @@ pipeline {
 
                      steps {
                           bat 'echo "Docker is pushing ...."'
-                          bat 'docker push onstounsi/demo'
+                          bat 'docker push onstounsi/springboot.jar'
                      }
         }
 
